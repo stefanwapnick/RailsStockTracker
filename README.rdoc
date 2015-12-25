@@ -1,0 +1,7 @@
+== README
+
+Rails stock tracker prototype app.
+
+Based on Udemy Rails course:
+https://www.udemy.com/the-complete-ruby-on-rails-developer-course
+
