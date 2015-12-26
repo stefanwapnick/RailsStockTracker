@@ -1,6 +1,7 @@
 class Stock < ActiveRecord::Base
 
   def self.new_from_lookup(ticker_symbol)
+    puts 'Making new instance'
     looked_up_stock = StockQuote::Stock.quote(ticker_symbol)
     return nil unless looked_up_stock.name
 
@@ -17,10 +18,13 @@ class Stock < ActiveRecord::Base
 
   # Return closing price if avaiable, else opening price if availabe
   def price
+    puts 'Looking for closing price'
     closing_price = StockQuote::Stock.quote(ticker).close
     return "#{closing_price} (Closing)" if closing_price
 
+    puts 'Looking for opening price'
     opening_price = StockQuote::Stock.quote(ticker).open
+    puts 'Done opening'
     return "#{opening_price} (Opening)" if opening_price
 
     'Unavailable'
