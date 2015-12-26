@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   get 'my_portfolio', to: 'users#my_portfolio'
   get 'search', to: 'stocks#search'
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => 'user/registrations' }
 end
