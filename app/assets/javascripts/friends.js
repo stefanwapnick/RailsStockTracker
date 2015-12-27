@@ -15,7 +15,7 @@ var init_friend_lookup = function(){
 
     $('#friend-lookup-form').on('ajax:error', function(event, xhr, data, status) {
         $('#friend-lookup-results').replaceWith(' ');
-        $('#friend-lookup-errors').replaceWith('Stock was not found');
+        $('#friend-lookup-errors').replaceWith('No users found');
         hide_spinner();
     });
 };

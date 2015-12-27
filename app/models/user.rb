@@ -32,20 +32,18 @@ class User < ActiveRecord::Base
   end
 
   def not_friends_with?(friend_id)
-    self.friendships.where(friend_id: friend_id).count < 1
+    friendships.where(friend_id: friend_id).count < 1
   end
 
   def except_current_user(users)
-    users.reject { |user| user.id == self.id }
+    users.reject {|user| user.id == self.id}
   end
 
-  def self.search(name_or_email)
+  def self.search(param)
     return User.none if param.blank?
-
-    param.strip!.downcase!
-
+    param.strip!
+    param.downcase!
     (first_name_matches(param) + last_name_matches(param) + email_matches(param)).uniq
-
   end
 
   def self.first_name_matches(param)
@@ -63,5 +61,4 @@ class User < ActiveRecord::Base
   def self.matches(field_name, param)
     where("lower(#{field_name}) like ?", "%#{param}%")
   end
-
 end

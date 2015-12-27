@@ -25,6 +25,10 @@ a {
     color: #666;
   }
 
+  &:visited.btn {
+    color: #fff;
+  }
+
   &:hover {
     color: #fff;
     /*background-color: #000;*/

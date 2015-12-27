@@ -22,8 +22,8 @@
           <td><%= friend.full_name %></td>
           <td><%= friend.email %></td>
           <td>
-            <%= link_to 'Profile', user_path(friend), class: 'btn btn-primary btn-xs' %>
-            <%= link_to 'Remove', friendship_path(friend), method: :delete, class: 'btn btn-primary btn-xs', data: {:confirm => 'Really delete this friend from you list?'} %>
+            <%= link_to 'Profile', users_path(friend), class: 'btn btn-primary btn-xs' %>
+            <%= link_to 'Remove', friendships_path(friend), method: :delete, class: 'btn btn-primary btn-xs', data: {:confirm => 'Really delete this friend from you list?'} %>
           </td>
         </tr>
     <% end %>

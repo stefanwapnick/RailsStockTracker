@@ -15,10 +15,11 @@ class UsersController < ApplicationController
   end
 
   def search
+
     @users = User.search(params[:search_param])
 
     if @users
-      @user = current_user.except_current_user(@users)
+      @users = current_user.except_current_user(@users)
       render partial: 'friends/lookup'
     else
       render status: :not_found, nothing: true

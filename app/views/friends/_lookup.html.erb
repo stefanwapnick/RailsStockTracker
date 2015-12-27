@@ -1,11 +1,11 @@
 <section id="friend-lookup">
 
   <h3>Search for Friends</h3>
-  <%= form_tag search_path, remote: true, method: :get, id: 'friend-lookup-form' do %>
+  <%= form_tag search_friends_path, remote: true, method: :get, id: 'friend-lookup-form' do %>
 
       <div class="form-group row no-padding text-center">
         <div class="col-md-10">
-          <%= text_field_tag :search_friend, params[:search_friend], placeholder: 'Friend name or email', autofocus: true, class: 'form-control search-box input-lg' %>
+          <%= text_field_tag :search_param, params[:search_param], placeholder: 'Friend name or email', autofocus: true, class: 'form-control search-box input-lg' %>
         </div>
 
         <div class="col-md-2">
@@ -26,17 +26,18 @@
       <% if @users.size > 0 %>
 
 
-          <div id="friend-lookup-results" class="well results-block col-md-10">
+          <div id="friend-lookup-results" class="well results-block">
 
             <table class="search-results-table">
               <tbody>
                 <% @users.each do |user| %>
                   <tr>
-                    <td><strong>Name: </strong> <%= user.full_name %> </td>
-                    <td><strong>Email: </strong> <%= user.email %> </td>
+                    <td><strong> Name: </strong> <%= user.full_name %> </td>
+                    <td><strong> Email: </strong> <%= user.email %> </td>
                     <td>
-                      <strong>Profile: </strong> <%= link_to 'Profile', user_path(user), class: 'btn btn-success btn-xs' %>
-                      <% if current_user.not_friends_wtih?(user.id) %>
+                      <strong> Actions: </strong>
+                      <%= link_to 'View Profile', users_path(user), class: 'btn btn-success btn-xs' %>
+                      <% if current_user.not_friends_with?(user.id) %>
                         <%= link_to 'Add as friend', add_friend_path(user: current_user, friend: user), class: 'btn btn-success btn-xs', method: :post %>
                       <% else %>
                         <span class="label label-primary">Already a friend</span>
@@ -49,13 +50,14 @@
           </div>
 
       <% else %>
-
-          <p class="lead">No results matched your query</p>
+          <div>
+            <p class="lead">No results matched your query</p>
+          </div>
 
       <% end %>
 
   <% end %>
 
-  <div id="stock-lookup-errors"></div>
+  <div id="friend-lookup-errors"></div>
 
 </section>

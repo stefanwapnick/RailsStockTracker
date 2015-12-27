@@ -10,11 +10,9 @@ class Stock < ActiveRecord::Base
     new_stock
   end
 
-
   def self.find_by_ticker(ticker_symbol)
-    self.where(:ticker == ticker_symbol).first
+    where(ticker: ticker_symbol).first
   end
-
 
   # Return closing price if avaiable, else opening price if availabe
   def price

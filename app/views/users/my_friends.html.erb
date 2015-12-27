@@ -2,14 +2,16 @@
 
 <%= render 'friends/lookup' %>
 
-<% if @friendships.size > 0 %>
+<section id="friends-current">
+  <% if @friendships.size > 0 %>
 
-  <%= render 'friends/list' %>
+    <%= render 'friends/list' %>
 
-<% else %>
+  <% else %>
 
-    <div>
-      <p class="lead">You don't have any friends currently</p>
-    </div>
+      <div>
+        <p class="lead">You don't have any friends currently</p>
+      </div>
 
-<% end %>
+  <% end %>
+</section>
